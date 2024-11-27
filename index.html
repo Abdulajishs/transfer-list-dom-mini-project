@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Transfer list</title>
+  </head>
+  <body>
+    <div class="flex flex-col justify-center items-center space-y-5">
+      <h1 class="text-2xl font-semibold m-5">Transfer List</h1>
+      <hr class="border-t-2 border-gray-300 w-full" />
+      <!-- left -->
+      <div class="flex flex-row justify-center w-full">
+        <div
+          id="left"
+          class="flex flex-col space-y-5 border border-black p-5 w-[40%]"
+        >
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="js" type="checkbox" class="item h-5 w-5" />
+            <label for="js" class="text-xl font-medium">JS</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="html" type="checkbox" class="item h-5 w-5" />
+            <label for="html" class="text-xl font-medium">HTML</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="CSS" type="checkbox" class="item h-5 w-5" />
+            <label for="CSS" class="text-xl font-medium">CSS</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="ts" type="checkbox" class="item h-5 w-5" />
+            <label for="ts" class="text-xl font-medium">TS</label>
+          </div>
+        </div>
+        <!-- center -->
+        <div
+          id="center"
+          class="flex flex-col space-y-5 border border-black p-5 w-[5%]"
+        >
+          <button
+            type="button"
+            class="border border-black bg-gray-300 rounded-sm disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-200 disabled:cursor-not-allowed"
+            id="allLeftSwift"
+          >
+            <<
+          </button>
+          <button
+            type="button"
+            class="border border-black bg-gray-300 rounded-sm disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-200 disabled:cursor-not-allowed"
+            id="leftSwift"
+          >
+            <
+          </button>
+          <button
+            type="button"
+            class="border border-black bg-gray-300 rounded-sm disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-200 disabled:cursor-not-allowed"
+            id="rightSwift"
+          >
+            >
+          </button>
+          <button
+            type="button"
+            class="border border-black bg-gray-300 rounded-sm disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-200 disabled:cursor-not-allowed"
+            id="allRightSwift"
+          >
+            >>
+          </button>
+        </div>
+        <!-- Right -->
+        <div
+          id="right"
+          class="flex flex-col space-y-5 border border-black p-5 w-[40%]"
+        >
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="react" type="checkbox" class="item h-5 w-5" />
+            <label for="react" class="text-xl font-medium">React</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="angular" type="checkbox" class="item h-5 w-5" />
+            <label for="angular" class="text-xl font-medium">Angular</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="vue" type="checkbox" class="item h-5 w-5" />
+            <label for="vue" class="text-xl font-medium">Vue</label>
+          </div>
+          <div class=" flex flex-row space-x-4 items-center">
+            <input id="sve" type="checkbox" class="item h-5 w-5" />
+            <label for="sve" class="text-xl font-medium">Svelte</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
