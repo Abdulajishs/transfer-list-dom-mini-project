@@ -1,5 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    let checkedItemLeft = []
+    let checkedItemRight = []
+
     let leftSwift = document.getElementById('leftSwift');
     let rightSwift = document.getElementById('rightSwift');
 
@@ -17,13 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
         moveAllItems(leftContent, rightContent);
         allRightSwiftBtn.disabled = true
         allLeftSwiftBtn.disabled = false
+        checkedItemRight = [...checkedItemRight, ...checkedItemLeft]
+        checkedItemLeft = []
+        rightSwift.disabled = true
+        if (checkedItemRight.length > 0) {
+            leftSwift.disabled = false
+        }
+        console.log(checkedItemLeft, checkedItemRight, "down")
     });
 
     allLeftSwiftBtn.addEventListener('click', () => {
         moveAllItems(rightContent, leftContent);
         allLeftSwiftBtn.disabled = true
         allRightSwiftBtn.disabled = false
-
+        checkedItemLeft = [...checkedItemLeft, ...checkedItemRight]
+        checkedItemRight = []
+        leftSwift.disabled = true
+        if (checkedItemLeft.length > 0) {
+            rightSwift.disabled = false
+        }
+        console.log(checkedItemLeft, checkedItemRight, "up")
     });
 
 
@@ -36,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    let checkedItemLeft = []
-    let checkedItemRight = []
     //  Adding item one by one based on target
     document.addEventListener('change', (event) => {
         if (event.target.classList.contains('item')) {
@@ -51,38 +65,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 rightSwift.disabled = false
                 checkedItemLeft.push(event.target.closest('div'));
                 // console.log(checkedItemLeft)
-            }else {
+            } else {
                 let index = checkedItemLeft.indexOf(event.target.closest('div'));
-                checkedItemLeft.splice(index,1)
+                checkedItemLeft.splice(index, 1)
             }
-        }else if (event.target.classList.contains('item') && event.target.closest('#right')) {
+        } else if (event.target.classList.contains('item') && event.target.closest('#right')) {
             if (event.target.checked) {
                 leftSwift.disabled = false
                 checkedItemRight.push(event.target.closest('div'));
                 // console.log(checkedItemRight)
-            }else {
+            } else {
                 let index = checkedItemRight.indexOf(event.target.closest('div'));
-                checkedItemRight.splice(index,1)
+                checkedItemRight.splice(index, 1)
             }
         }
 
         // updating buttons based on checked
-        if(checkedItemLeft.length > 0){
+        if (checkedItemLeft.length > 0) {
             rightSwift.disabled = false
-        }else{
+        } else {
             rightSwift.disabled = true
         }
-        if(checkedItemRight.length > 0){
+        if (checkedItemRight.length > 0) {
             leftSwift.disabled = false
-        }else{
+        } else {
             leftSwift.disabled = true
         }
 
     })
 
 
-    rightSwift.addEventListener('click',()=>{
-        checkedItemLeft.forEach((item)=>{
+    rightSwift.addEventListener('click', () => {
+        checkedItemLeft.forEach((item) => {
             item.querySelector('input').checked = false
             rightContent.appendChild(item)
 
@@ -91,10 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
         rightSwift.disabled = true
         allRightSwiftBtn.disabled = false
         allLeftSwiftBtn.disabled = false
+
+        let leftContainer = document.getElementById('left')
+        // console.log(leftContainer.childNodes)
+        // console.log(leftContainer.childNodes.length)
+        if (leftContainer.childNodes.length === 0) {
+            allRightSwiftBtn.disabled = true
+        }
     })
 
-    leftSwift.addEventListener('click',()=>{
-        checkedItemRight.forEach((item)=>{
+    leftSwift.addEventListener('click', () => {
+        checkedItemRight.forEach((item) => {
             item.querySelector('input').checked = false
             leftContent.appendChild(item)
 
@@ -103,6 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
         leftSwift.disabled = true
         allRightSwiftBtn.disabled = false
         allLeftSwiftBtn.disabled = false
+        
+        let rightContainer = document.getElementById('right')
+        if (rightContainer.childNodes.length === 0) {
+            allLeftSwiftBtn.disabled = true
+        }
+
     })
 
 });
